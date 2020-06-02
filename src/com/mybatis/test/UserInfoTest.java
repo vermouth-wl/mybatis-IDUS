@@ -98,6 +98,19 @@ public class UserInfoTest {
             System.out.println("更新失败");
         }
     }
+
+    @Test
+    public void testDeleteUserInfoById() {
+        // 实例化用户对象
+        UserInfo userInfo = new UserInfo();
+        // 执行delete()方法，该方法返回受影响的条数
+        int result = sqlSession.delete("deleteUserInfoById", 6);
+        if (result > 0) {
+            System.out.println("删除成功");
+        } else {
+            System.out.println("删除失败");
+        }
+    }
     @After
     public void destroy() {
         // 提交事务

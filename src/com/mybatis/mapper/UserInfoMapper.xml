@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.UserInfoMapper">
-    <!-- 根据用户编号查询信息 -->
+    <!-- 条件查询 -->
     <select id="findUserInfoById" parameterType="int" resultType="UserInfo">
         SELECT * FROM USERINFO T WHERE T.ID = #{id}
     </select>
 
-    <!-- 根据用户编码查询信息 -->
+    <!-- 条件查询 -->
     <select id="findUserInfoByUserCode" parameterType="String" resultType="UserInfo">
         SELECT * FROM USERINFO T WHERE T.USER_CODE = #{user_code}
     </select>
 
-    <!-- 模糊查询出用户名中‘王’的信息 -->
+    <!-- 模糊查询 -->
     <select id="findUserInfoByUserName" resultType="UserInfo" parameterType="String">
         SELECT * FROM USERINFO T WHERE T.USER_NAME LIKE CONCAT(CONCAT('%', #{USER_NAME}, '%'))
     </select>
 
-    <!-- 查询出用户表中所有信息 -->
+    <!-- 全量查询 -->
     <select id="findUserInfo" resultType="UserInfo">
         SELECT * FROM USERINFO T
     </select>
@@ -31,4 +31,9 @@
     <update id="updateUserInfo" parameterType="UserInfo">
         UPDATE USERINFO SET PHONE = #{phone} WHERE USER_CODE = #{user_code}
     </update>
+
+    <!-- 删除数据 -->
+    <delete id="deleteUserInfoById" parameterType="int">
+        DELETE FROM USERINFO WHERE ID = #{id}
+    </delete>
 </mapper>
