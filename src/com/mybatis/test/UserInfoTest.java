@@ -1,5 +1,6 @@
 package com.mybatis.test;
 
+import com.mybatis.mapper.UserInfoMapper;
 import com.mybatis.pojo.UserInfo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -43,6 +44,16 @@ public class UserInfoTest {
     public void testFindUserInfoById() {
         // 通过SqlSession执行映射结果，并返回结果集
         UserInfo userInfo = sqlSession.selectOne("findUserInfoById", 1);
+        System.out.println(userInfo);
+    }
+
+    // 通过Mapper接口执行Sql查询
+    @Test
+    public void findUserInfoById() {
+        // 获得UserInfoMapper接口的代理对象
+        UserInfoMapper userInfoMapper = sqlSession.getMapper(UserInfoMapper.class);
+        // 直接调用接口方法并传参
+        UserInfo userInfo = userInfoMapper.findUserInfoById(1);
         System.out.println(userInfo);
     }
 
