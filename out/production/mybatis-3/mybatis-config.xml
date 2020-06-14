@@ -29,5 +29,7 @@
     <!-- 引用映射文件 -->
     <mappers>
         <mapper resource="com/mybatis/mapper/UserInfoMapper.xml"/>
+        <mapper resource="com/mybatis/mapper/OrderInfoMapper.xml"/>
+        <mapper resource="com/mybatis/mapper/PriceInfoMapper.xml"/>
     </mappers>
 </configuration>

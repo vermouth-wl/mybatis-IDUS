@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.PriceInfoMapper">
+    <!-- 根据商品编号获取价格信息 -->
+    <select id="findPriceInfoByItemCode" parameterType="String" resultMap="PriceInfoMap">
+        select * from price where item_code = #{itemCode}
+    </select>
+    <!-- 查询结果映射 -->
+    <resultMap id="PriceInfoMap" type="PriceInfo">
+        <!-- 通过id元素映射标识字段 -->
+        <id property="pid" column="id"/>
+        <!-- 通过result字段映射其他字段 -->
+        <result property="itemCode" column="item_code"/>
+        <result property="itemName" column="item_name"/>
+        <result property="price" column="price"/>
+        <result property="isStop" column="status"/>
+    </resultMap>
+</mapper>
